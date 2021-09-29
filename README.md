@@ -149,6 +149,20 @@ For simplicity, on Linux/OSX users can simply run `make` (or `make CONFIG=releas
 
 Some libraries, such as Boost, POCO, V8, etc., need to be installed by user manually.
 
+### Docker
+
+Build docker image:
+
+```sh
+docker build -t nativejson-benchmark .
+```
+
+Run in docker:
+
+```sh
+docker run --rm --volume=<path_to_repo>:/nativejson-benchmark nativejson-benchmark ./docker_build.sh
+```
+
 ## Sample Results
 
 Update on: 2016-9-9

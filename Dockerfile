@@ -1,23 +1,25 @@
-# nativejson-benchmark
-# build with: docker build -t nativejson-benchmark .
-FROM debian:jessie
+FROM ubuntu:18.04
 
-COPY . /nativejson-benchmark
+RUN apt-get update --fix-missing && \
+	DEBIAN_FRONTEND="noninteractive" apt-get install --no-install-recommends -y \
+	build-essential \
+	ca-certificates \
+	curl \
+	gcc \
+	g++ \
+	git \
+	libboost-all-dev \
+	php-cli
+
+# premake5
+RUN mkdir -p /premake5
+WORKDIR /premake5
+
+RUN curl -L -s https://github.com/premake/premake-core/releases/download/v5.0.0-alpha16/premake-5.0.0-alpha16-linux.tar.gz | tar -xvz && \
+	chmod +x premake5
+
+ENV PATH $PATH:/premake5
+
+VOLUME ["/nativejson-benchmark"]
+
 WORKDIR /nativejson-benchmark
-ENV PATH $PATH:/nativejson-benchmark/build
-
-RUN buildDeps='build-essential gcc-multilib g++-multilib git-core curl ca-certificates php5-cli libboost-all-dev'; \
-	set -x \
-	&& apt-get update && apt-get install --no-install-recommends -y $buildDeps \
-	&& cd /nativejson-benchmark \
-	&& git submodule update --init \
-	&& cd build \
-	&& curl -L -s https://github.com/premake/premake-core/releases/download/v5.0.0-alpha7/premake-5.0.0-alpha7-linux.tar.gz | tar -xvz \
-	&& chmod +x premake5 && chmod +x premake.sh && sync && /bin/sh -c ./premake.sh && ./machine.sh \
-	&& cd /nativejson-benchmark && make \
-	&& cd /nativejson-benchmark/bin \
-	&& for t in *; do ./$t; done \
-	&& cd /nativejson-benchmark/result && make \
-	&& apt-get purge -y --auto-remove $buildDeps
-
-VOLUME ["/nativejson-benchmark/output"]
