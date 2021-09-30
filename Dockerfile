@@ -9,6 +9,7 @@ RUN apt-get update --fix-missing && \
 	g++ \
 	git \
 	libboost-all-dev \
+	libpoco-dev \
 	php-cli
 
 # premake5
