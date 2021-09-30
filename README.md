@@ -72,7 +72,7 @@ Library | Language | Version | Notes
 [folly](https://github.com/facebook/folly) | C++11 | 2016.08.29.00 | Need installation |
 [gason](https://github.com/vivkin/gason) | C++11 | 
 [jansson](https://github.com/akheron/jansson) | C | v2.7
-[jeayeson](https://github.com/jeaye/jeayeson) | C++14
+[jeayeson](https://github.com/jeaye/jeayeson) | C++14 | ecbed0b
 [json-c](https://github.com/json-c/json-c) | C | 0.12.1
 [jsoncons](https://github.com/danielaparker/jsoncons) | C++11 | 0.97.1
 [json-voorhees](https://github.com/tgockel/json-voorhees) | C++ | v1.1.1
