@@ -160,7 +160,10 @@ docker build -t nativejson-benchmark .
 Run in docker:
 
 ```sh
-docker run --rm --volume=<path_to_repo>:/nativejson-benchmark nativejson-benchmark ./docker_build.sh
+docker run --rm -it --volume=<path_to_repo>:/nativejson-benchmark nativejson-benchmark
+# inside docker
+./thirdparty_configure.sh
+./docker_build.sh
 ```
 
 ## Sample Results
