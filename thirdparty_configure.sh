@@ -1,5 +1,7 @@
 #!/bin/sh
 
+REPO=$(dirname $(realpath $0))
+
 # Configure & build Ulib
-cd thirdparty/ULib/
+cd $REPO/thirdparty/ULib/
 ./configure --disable-shared && make
